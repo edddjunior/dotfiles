@@ -106,3 +106,5 @@ alias gp="git push"
 
 # It opens Trash/files dir and show items
 alias cdt="cd; cd .local/share/Trash/files/; ls -a"
+# It returns a dir and calls the algorithm that deletes a file and its corresponding .trashinfo file
+alias dt="cd ..; bash del.sh"
