@@ -1,0 +1,24 @@
+" Disable mouse scroll wheel
+nnoremap <ScrollWheelUp> <nop>
+nnoremap <S-ScrollWheelUp> <nop>
+nnoremap <C-ScrollWheelUp> <nop>
+nnoremap <ScrollWheelDown> <nop>
+nnoremap <S-ScrollWheelDown> <nop>
+nnoremap <C-ScrollWheelDown> <nop>
+nnoremap <ScrollWheelLeft> <nop>
+nnoremap <S-ScrollWheelLeft> <nop>
+nnoremap <C-ScrollWheelLeft> <nop>
+nnoremap <ScrollWheelRight> <nop>
+nnoremap <S-ScrollWheelRight> <nop>
+nnoremap <C-ScrollWheelRight> <nop>
+
+" Disable arrows
+for prefix in ['i', 'n', 'v']
+  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+    exe prefix . "noremap " . key . " <Nop>"
+  endfor
+endfor
+
+set relativenumber             " Show relative line numbers
+
+set mouse-=a
