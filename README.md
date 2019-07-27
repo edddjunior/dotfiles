@@ -12,3 +12,6 @@
 ##### sudo apt-get install xclip
 
 - Its necessary to install GVim for "+y "+p commands to work
+
+- Don't forget that adding this command in .vimrc should solve the problem with Vim colors in tmux:
+##### set background=dark
