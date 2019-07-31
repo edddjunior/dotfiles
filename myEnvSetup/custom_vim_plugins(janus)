@@ -1,2 +1,7 @@
 # Custom Vim Plugins:
 - IdentLine
+https://github.com/Yggdroot/indentLine.git
+- auto-pairs
+https://github.com/jiangmiao/auto-pairs.git
+- vim-vue 
+https://github.com/posva/vim-vue.git
