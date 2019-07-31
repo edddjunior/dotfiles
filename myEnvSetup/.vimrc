@@ -24,13 +24,10 @@ call janus#add_group("colors")
 ""
 "" Customisations
 ""
-let g:indentLine_char = '▏'
-set background=dark
 
 if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
-
 
 " Disable plugins prior to loading pathogen
 exe 'source ' . g:janus_vim_path . '/core/plugins.vim'
