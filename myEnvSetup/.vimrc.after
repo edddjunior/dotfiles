@@ -1,4 +1,4 @@
-" Disable mouse scroll wheel
+" Disable mouse
 nnoremap <ScrollWheelUp> <nop>
 nnoremap <S-ScrollWheelUp> <nop>
 nnoremap <C-ScrollWheelUp> <nop>
@@ -11,6 +11,7 @@ nnoremap <C-ScrollWheelLeft> <nop>
 nnoremap <ScrollWheelRight> <nop>
 nnoremap <S-ScrollWheelRight> <nop>
 nnoremap <C-ScrollWheelRight> <nop>
+set mouse-=a
 
 " Disable arrows
 for prefix in ['i', 'n', 'v']
@@ -19,6 +20,15 @@ for prefix in ['i', 'n', 'v']
   endfor
 endfor
 
-set relativenumber             " Show relative line numbers
+" Relative line numbers
+set relativenumber
 
-set mouse-=a
+" Autocomplete (added because of css syntax)
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+" Ident line conf
+let g:indentLine_char = '▏'
+
+" Keeping right color scheme in vim with tmux
+set background=dark
