@@ -30,5 +30,9 @@ set omnifunc=syntaxcomplete#Complete
 " Ident line conf
 let g:indentLine_char = '▏'
 
+" Defines the external ack-like program which CtrlSF uses as source
+" If nothing is specified, CtrlSF will try ag first and fallback to ack if ag is not available
+let g:ctrlsf_ackprg = 'ag'
+
 " Keeping right color scheme in vim with tmux
 set background=dark
