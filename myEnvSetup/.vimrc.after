@@ -13,6 +13,9 @@ nnoremap <S-ScrollWheelRight> <nop>
 nnoremap <C-ScrollWheelRight> <nop>
 set mouse-=a
 
+" Sets 'ctrl + l' to clean find highlights
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+
 " Disable arrows
 for prefix in ['i', 'n', 'v']
   for key in ['<Up>', '<Down>', '<Left>', '<Right>']
