@@ -9,3 +9,5 @@ https://github.com/dyng/ctrlsf.vim.git
 https://github.com/rking/ag.vim.git
 - vim-vue 
 https://github.com/posva/vim-vue.git
+- ctrlp
+https://github.com/kien/ctrlp.vim
