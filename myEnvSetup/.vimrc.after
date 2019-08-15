@@ -51,25 +51,6 @@ filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 ""
-"" ALIASES
-""
-
-" Sets 'ctrl + l' to clean find highlights
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-
-" Maps <leader + p> to toggle NerdTree
-silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
-
-" Maps <leader + b> to toggle the buffer (Buffergator)
-" By default it opens with <leader + b> and closes with <leader + B>
-" Now it's just <leader + b>
-silent! nmap <silent> <leader>b :BuffergatorToggle<CR>
-
-" Lets "´" switch fast to next buffer (Buffergator)
-silent! nmap <silent> ´ :BuffergatorMruCycleNext<CR>
-
-
-""
 "" HIGHLIGHTS CURRENT FILE IN NERDTREE
 ""
 
@@ -88,3 +69,22 @@ function! SyncTree()
 endfunction
 
 " Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
+
+""
+"" ALIASES
+""
+
+" Sets 'ctrl + l' to clean find highlights
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+
+" Maps <leader + p> to toggle NerdTree
+silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
+
+" Maps <leader + b> to toggle the buffer (Buffergator)
+" By default it opens with <leader + b> and closes with <leader + B>
+" Now it's just <leader + b>
+silent! nmap <silent> <leader>b :BuffergatorToggle<CR>
+
+" Lets "´" switch fast to next buffer (Buffergator)
+silent! nmap <silent> ´ :BuffergatorMruCycleNext<CR>
