@@ -1,42 +1,61 @@
 ""
-"" Janus setup
+"" SETTINGS
 ""
 
-" Define paths
-if has('win32') || has('win64') || has('win32unix')
-  let g:janus_path = escape(expand("~/.vim/janus/vim"), ' ')
-  let g:janus_vim_path = escape(expand("~/.vim/janus/vim"), ' ')
-else
-  let g:janus_path = escape(fnamemodify(resolve(expand("<sfile>:p")), ":h"), ' ')
-  let g:janus_vim_path = escape(fnamemodify(resolve(expand("<sfile>:p" . "vim")), ":h"), ' ')
-endif
-let g:janus_custom_path = expand("~/.janus")
+"Disable mouse
+nnoremap <ScrollWheelUp> <nop>
+nnoremap <S-ScrollWheelUp> <nop>
+nnoremap <C-ScrollWheelUp> <nop>
+nnoremap <ScrollWheelDown> <nop>
+nnoremap <S-ScrollWheelDown> <nop>
+nnoremap <C-ScrollWheelDown> <nop>
+nnoremap <ScrollWheelLeft> <nop>
+nnoremap <S-ScrollWheelLeft> <nop>
+nnoremap <C-ScrollWheelLeft> <nop>
+nnoremap <ScrollWheelRight> <nop>
+nnoremap <S-ScrollWheelRight> <nop>
+nnoremap <C-ScrollWheelRight> <nop>
+set mouse-=a
 
-" Source janus's core
-exe 'source ' . g:janus_vim_path . '/core/before/plugin/janus.vim'
+" Disable arrows
+for prefix in ['i', 'n', 'v']
+  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+    exe prefix . "noremap " . key . " <Nop>"
+  endfor
+endfor
 
-" You should note that groups will be processed by Pathogen in reverse
-" order they were added.
-call janus#add_group("tools")
-call janus#add_group("langs")
-call janus#add_group("colors")
-
-""
-"" Customisations
-""
-
-if filereadable(expand("~/.vimrc.before"))
-  source ~/.vimrc.before
-endif
-
-" Disable plugins prior to loading pathogen
-exe 'source ' . g:janus_vim_path . '/core/plugins.vim'
+" Defines the external ack-like program which CtrlSF uses as source
+" If nothing is specified, CtrlSF will try ag first and fallback to ack if ag is not available
+let g:ctrlsf_ackprg = 'ag'
 
 ""
-"" Pathogen setup
+"" APPEARANCE
 ""
 
-" Load all groups, custom dir, and janus core
-call janus#load_pathogen()
+" Keeps right color scheme in vim with tmux
+set background=dark
 
-" .vimrc.after is loaded after the plugins have loaded
+" Relative line numbers
+set relativenumber
+
+" Ident line conf
+let g:indentLine_char = '▏'
+
+" Highlights current line for easy reading
+set cursorline
+hi cursorline cterm=none term=none
+hi CursorLine ctermbg=237
+
+" Autocomplete (added because of css syntax)
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+""
+"" ALIASES
+""
+
+" Maps 'ctrl + l' to clean find highlights
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+
+" Maps <leader + p> to toggle NerdTree
+silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
