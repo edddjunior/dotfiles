@@ -64,3 +64,6 @@ silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
 " By default it opens with <leader + b> and closes with <leader + B>
 " Now it's just <leader + b>
 silent! nmap <silent> <leader>b :BuffergatorToggle<CR>
+
+" Lets "´" switch fast to next buffer (Buffergator)
+silent! nmap <silent> ´ :BuffergatorMruCycleNext<CR>
