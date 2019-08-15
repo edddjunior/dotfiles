@@ -1,0 +1,2 @@
+" Defines leader key
+let mapleader = ","
