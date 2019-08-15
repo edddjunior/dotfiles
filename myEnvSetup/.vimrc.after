@@ -46,6 +46,10 @@ set cursorline
 hi cursorline cterm=none term=none
 hi CursorLine ctermbg=237
 
+" Autocomplete (added because of css syntax)
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 ""
 "" ALIASES
 ""
@@ -53,9 +57,10 @@ hi CursorLine ctermbg=237
 " Sets 'ctrl + l' to clean find highlights
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
-" Autocomplete (added because of css syntax)
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
 " Maps <leader + p> to toggle NerdTree
-silent! nmap <silent> <Leader>p :NERDTreeToggle<CR
+silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
+
+" Maps <leader + b> to toggle the buffer (Buffergator)
+" By default it opens with <leader + b> and closes with <leader + B>
+" Now it's just <leader + b>
+silent! nmap <silent> <leader>b :BuffergatorToggle<CR>
