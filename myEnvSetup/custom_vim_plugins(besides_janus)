@@ -11,3 +11,7 @@ https://github.com/rking/ag.vim.git
 https://github.com/posva/vim-vue.git
 - ctrlp
 https://github.com/kien/ctrlp.vim
+- vim-rails
+https://github.com/tpope/vim-rails.git
+- vim-rtag
+https://github.com/tpope/vim-ragtag.git
