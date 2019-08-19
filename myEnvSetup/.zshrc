@@ -111,5 +111,8 @@ alias dt="cd ..; bash del.sh"
 # It deletes everything from Trash (also info files in /info)
 alias det="cd ..; rm -rf files/*; rm -rf info/*"
 
+# Adds RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
 # Loads NPM
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
