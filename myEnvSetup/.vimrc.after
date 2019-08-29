@@ -15,7 +15,7 @@ nnoremap <C-ScrollWheelLeft> <nop>
 nnoremap <ScrollWheelRight> <nop>
 nnoremap <S-ScrollWheelRight> <nop>
 nnoremap <C-ScrollWheelRight> <nop>
-set mouse-=a
+set mouse=nicr
 
 " Disable arrows
 for prefix in ['i', 'n', 'v']
