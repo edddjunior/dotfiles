@@ -4,3 +4,6 @@ sudo apt-get update && sudo apt-get install indicator-sound-switcher
 
 - Vtop
 npm install -g vtop
+
+- neofetch
+sudo apt install neofetch
