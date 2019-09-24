@@ -100,6 +100,14 @@ sed -e '/^local   all/s/trust/md5/' /etc/postgresql/${postgresql_version}/main/p
 sudo service postgresql restart
 echo "Ready."
 
+# Zsh and OhMyZsh
+echo "Zsh & OhMyZsh..........................................................................................................................................................................."
+sudo apt install fonts-powerline
+sudo apt install zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.zshrc
+echo "Ready."
+
 # Tmux
 echo "Tmux..........................................................................................................................................................................."
 sudo apt install tmux -y
