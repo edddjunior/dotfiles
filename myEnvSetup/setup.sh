@@ -138,5 +138,8 @@ echo "Ready."
 # TRIM SSD
 echo "TRIM SSD........................................................................................................................................................................"
 sudo fstrim -v /
+sudo wget -O /etc/cron.daily/TRIM_ssd https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/TRIM_ssd
+sudo chmod +x /etc/cron.daily/TRIM_ssd
 
 echo "Finished!"
+sudo reboot
