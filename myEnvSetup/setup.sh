@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Starting Setup..."
 # little joke in Portuguese, nothing to be afraid
-echo "É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
+echo "BORAAAAA! É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
 echo ""
 
 # Variables
@@ -37,20 +37,20 @@ echo "Ready."
 # NVM
 echo "NVM..........................................................................................................................................................................."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_version}/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 echo "Ready."
 
 # Node.js
 echo "Node..........................................................................................................................................................................."
-nvm install ${node_version}
-nvm alias default ${node_version}
-nvm use default
+gnome-terminal 'bash -c "nvm install ${node_version}; nvm alias default ${node_version}; nvm use default"'
 echo "Ready."
 
 # Yarn
 echo "Yarn..........................................................................................................................................................................."
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg |  apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt remove cmdtest
 sudo apt-get update && sudo apt-get install yarn -y
 echo "Ready."
 
@@ -78,13 +78,12 @@ echo "Ready."
 
 # Elasticsearch
 echo "Elasticsearch..........................................................................................................................................................................."
-wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 sudo apt-get install apt-transport-https
-echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 sudo apt-get update && sudo apt-get install elasticsearch
-
-systemctl start elasticsearch.service && systemctl stop elasticsearch.service
-systemctl stop elasticsearch.service
+sudo systemctl start elasticsearch.service && systemctl stop elasticsearch.service
+sudo systemctl stop elasticsearch.service
 echo "Ready."
 
 # Postgres
@@ -92,11 +91,10 @@ echo "Postgres..................................................................
 sudo apt-get install postgresql-${postgresql_version} -y
 sudo apt-get install libpq-dev -y
 
-sudo sed -e '/^local   all/s/peer/trust/' /etc/postgresql/${postgresql_version}/main/pg_hba.conf
+sudo sed -i '/^local   all/s/peer/trust/' /etc/postgresql/${postgresql_version}/main/pg_hba.conf
 sudo service postgresql restart
-psql -U postgres
-ALTER USER postgres WITH ENCRYPTED PASSWORD '${postgresql_password}';
-sed -e '/^local   all/s/trust/md5/' /etc/postgresql/${postgresql_version}/main/pg_hba.conf
+psql -U postgres -c "ALTER USER postgres WITH ENCRYPTED PASSWORD '${postgresql_password}'";
+sudo sed -i '/^local   all/s/trust/md5/' /etc/postgresql/${postgresql_version}/main/pg_hba.conf
 sudo service postgresql restart
 echo "Ready."
 
@@ -138,7 +136,7 @@ rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior
 echo "Ready."
 
 # TRIM SSD
-echo "TRIM SSD........................................................................................................................................................................."
+echo "TRIM SSD........................................................................................................................................................................"
 sudo fstrim -v /
 
 echo "Finished!"
