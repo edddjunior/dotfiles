@@ -128,12 +128,12 @@ echo "Ready."
 
 # Zsh and OhMyZsh
 echo "Zsh & OhMyZsh..........................................................................................................................................................................."
-echo "Press ctrl+d when it's over"
 cd ~
 sudo apt-get install fonts-powerline
 sudo apt-get install zsh -y
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.zshrc
+exit
 echo "Ready."
 
 # Tools
