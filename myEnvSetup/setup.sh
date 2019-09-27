@@ -2,12 +2,11 @@
 echo "Starting Setup..."
 # little joke in Portuguese, nothing to be afraid
 echo "BORAAAAA! É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
-echo ""
 
 # Variables
 echo "Loading variables..........................................................................................................................................................................."
-git_username=''
-git_email=''
+git_username='edddjunior'
+git_email='edsonbergamojunior@gmail.com'
 nvm_version='v0.34.0'
 node_version='10.16.3'
 ruby_version='2.6.4'
@@ -37,13 +36,11 @@ echo "Ready."
 # NVM
 echo "NVM..........................................................................................................................................................................."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_version}/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 echo "Ready."
 
 # Node.js
 echo "Node..........................................................................................................................................................................."
-gnome-terminal 'bash -c "nvm install ${node_version}; nvm alias default ${node_version}; nvm use default"'
+gnome-terminal -- bash -c "nvm install ${node_version}; nvm alias default ${node_version}; nvm use default; bash"
 echo "Ready."
 
 # Yarn
@@ -51,7 +48,7 @@ echo "Yarn......................................................................
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg |  apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt remove cmdtest
-sudo apt-get update && sudo apt-get install yarn -y
+sudo apt-get update && sudo apt-get install --no-install-recommends yarn
 echo "Ready."
 
 # Java
@@ -121,7 +118,6 @@ git clone https://github.com/tpope/vim-rails.git
 git clone https://github.com/tpope/vim-ragtag.git
 sudo apt-get install silversearcher-ag -y
 
-rm -rf ~/.vimrc && wget -O ~/.vimrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc
 wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.after
 wget -O ~/.vimrc.before https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.before
 echo "Ready."
