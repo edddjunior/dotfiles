@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "Starting Setup..."
-# little joke in Portuguese, nothing to be afraid
 echo "BORAAAAA! É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
 
 # Variables
@@ -70,13 +69,11 @@ echo "Ready."
 echo "Ruby..........................................................................................................................................................................."
 rvm install "ruby-${ruby_version}"
 rvm --default use ${ruby_version}
-ruby -v
 echo "Ready."
 
 # Rails
 echo "Rails..........................................................................................................................................................................."
 gem install rails -v ${rails_version}
-rails -v
 echo "Ready."
 
 # Elasticsearch
@@ -85,8 +82,8 @@ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add
 sudo apt-get install apt-transport-https
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 sudo apt-get update && sudo apt-get install elasticsearch
-sudo systemctl start elasticsearch.service && systemctl stop elasticsearch.service
-sudo systemctl stop elasticsearch.service
+sudo /bin/systemctl enable elasticsearch.service
+sudo systemctl start elasticsearch.service && sudo systemctl stop elasticsearch.service
 echo "Ready."
 
 # Postgres
@@ -132,7 +129,7 @@ echo "Ready."
 echo "Zsh & OhMyZsh..........................................................................................................................................................................."
 cd ~
 sudo apt-get install fonts-powerline
-sudo apt-get install zsh
+sudo apt-get install zsh -y
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.zshrc
 echo "Ready."
