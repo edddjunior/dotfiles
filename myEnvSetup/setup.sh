@@ -12,7 +12,7 @@ node_version='10.16.3'
 ruby_version='2.6.4'
 rails_version='6.0.0'
 postgresql_version='10'
-postgresql_password=''
+postgresql_password='81035810'
 echo "Ready."
 
 # Update and upgrade
@@ -23,7 +23,7 @@ echo "Ready."
 
 # Curl and Wget
 echo "Installing Curl and Wget..........................................................................................................................................................................."
-sudo apt-get install curl -y && apt-get install wget -y
+sudo apt-get install curl -y && sudo apt-get install wget -y
 echo "Ready."
 
 # Git and its conf
@@ -36,18 +36,22 @@ echo "Ready."
 # NVM
 echo "NVM..........................................................................................................................................................................."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_version}/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 echo "Ready."
 
 # Node.js
 echo "Node..........................................................................................................................................................................."
-gnome-terminal -- bash -c "nvm install ${node_version}; nvm alias default ${node_version}; nvm use default; bash"
+nvm install ${node_version}
+nvm alias default ${node_version}
+nvm use default
 echo "Ready."
 
 # Yarn
 echo "Yarn..........................................................................................................................................................................."
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg |  apt-key add -
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt remove cmdtest
 sudo apt-get update && sudo apt-get install --no-install-recommends yarn
 echo "Ready."
 
@@ -66,11 +70,13 @@ echo "Ready."
 echo "Ruby..........................................................................................................................................................................."
 rvm install "ruby-${ruby_version}"
 rvm --default use ${ruby_version}
+ruby -v
 echo "Ready."
 
 # Rails
 echo "Rails..........................................................................................................................................................................."
 gem install rails -v ${rails_version}
+rails -v
 echo "Ready."
 
 # Elasticsearch
@@ -108,7 +114,6 @@ sudo apt-get install vim -y && sudo apt-get install vim-gnome -y
 curl -L https://bit.ly/janus-bootstrap | bash
 
 cd ~/.vim/janus/vim/tools/
-
 git clone https://github.com/jiangmiao/auto-pairs.git
 git clone https://github.com/yggdroot/indentline.git
 git clone https://github.com/dyng/ctrlsf.vim.git
@@ -118,6 +123,7 @@ git clone https://github.com/tpope/vim-rails.git
 git clone https://github.com/tpope/vim-ragtag.git
 sudo apt-get install silversearcher-ag -y
 
+cd ~
 wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.after
 wget -O ~/.vimrc.before https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.before
 echo "Ready."
