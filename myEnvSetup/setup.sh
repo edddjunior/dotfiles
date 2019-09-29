@@ -20,6 +20,10 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 echo "Ready."
 
+# Other stuff
+sudo apt-get install build-essential
+echo "Updating repositories... ##########################################################################################################################################################################"
+
 # Curl and Wget
 echo "Installing Curl and Wget"
 sudo apt-get install curl -y && sudo apt-get install wget -y
@@ -97,6 +101,12 @@ psql -U postgres -c "ALTER USER postgres WITH ENCRYPTED PASSWORD '${postgresql_p
 sudo sed -i '/^local   all/s/trust/md5/' /etc/postgresql/${postgresql_version}/main/pg_hba.conf
 sudo service postgresql restart
 echo "Ready."
+
+# Redis
+echo "Redis... ##########################################################################################################################################################################"
+sudo apt-get install redis
+sudo systemctl start redis-server && sudo systemctl status redis
+sudo systemctl stop redis
 
 # Tmux
 echo "Tmux... ##########################################################################################################################################################################"
