@@ -104,7 +104,7 @@ echo "Ready."
 
 # Redis
 echo "Redis... ##########################################################################################################################################################################"
-sudo apt-get install redis
+sudo apt-get install redis -y
 sudo systemctl start redis-server && sudo systemctl status redis
 sudo systemctl stop redis
 
