@@ -21,7 +21,7 @@ sudo apt-get upgrade -y
 echo "Ready."
 
 # Other stuff
-sudo apt-get install build-essential
+sudo apt-get install build-essential -y
 echo "Updating repositories... ##########################################################################################################################################################################"
 
 # Curl and Wget
