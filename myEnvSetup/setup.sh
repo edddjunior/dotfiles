@@ -86,7 +86,6 @@ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add
 sudo apt-get install apt-transport-https
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 sudo apt-get update && sudo apt-get install elasticsearch
-sudo /bin/systemctl enable elasticsearch.service
 sudo systemctl start elasticsearch.service && sudo systemctl stop elasticsearch.service
 echo "Ready."
 
@@ -107,6 +106,10 @@ echo "Redis... #################################################################
 sudo apt-get install redis -y
 sudo systemctl start redis-server && sudo systemctl status redis
 sudo systemctl stop redis
+
+# Regolith
+sudo add-apt-repository -y ppa:kgilmer/regolith-stable
+sudo apt-get install regolith-desktop -y
 
 # Tmux
 echo "Tmux... ##########################################################################################################################################################################"
