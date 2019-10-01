@@ -110,6 +110,8 @@ sudo systemctl stop redis
 # Regolith
 sudo add-apt-repository -y ppa:kgilmer/regolith-stable
 sudo apt-get install regolith-desktop -y
+mkdir -p ~/.config/regolith/i3
+cp /etc/regolith/i3/config ~/.config/regolith/i3/config
 
 # Tmux
 echo "Tmux... ##########################################################################################################################################################################"
