@@ -104,6 +104,9 @@ alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
 
+# This makes it faster to reset terminal
+alias rs="reset"
+
 # It opens Trash/files dir and show items
 alias cdt="cd; cd .local/share/Trash/files/; ls -a"
 # It returns a dir and calls the algorithm that deletes a file and its corresponding .trashinfo file
