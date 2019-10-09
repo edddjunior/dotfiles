@@ -151,8 +151,9 @@ yes | sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/t
 rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.zshrc
 
 echo "Ready."
-
+echo "Tools... ##########################################################################################################################################################################"
 # Tools
+
 npm install -g vtop
 
 sudo apt install neofetch
