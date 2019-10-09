@@ -108,6 +108,7 @@ sudo systemctl start redis-server && sudo systemctl status redis
 sudo systemctl stop redis
 
 # Regolith
+echo "Regolith... ##########################################################################################################################################################################"
 sudo add-apt-repository -y ppa:kgilmer/regolith-stable
 sudo apt-get install regolith-desktop -y
 mkdir -p ~/.config/regolith/i3
