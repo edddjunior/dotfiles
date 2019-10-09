@@ -24,6 +24,20 @@ for prefix in ['i', 'n', 'v']
   endfor
 endfor
 
+" Folding comments
+function FoldComments()
+  set foldenable
+  set fdm=expr
+  set fde=getline(v:lnum)=~'^\\s#'?1:getline(prevnonblank(v:lnum))=~'^\\s#'?1:getline(nextnonblank(v:lnum))=~'^\\s*#'?1:0
+endfunction
+
+function ShowComments()
+  set nofoldenable
+endfunction
+
+nnoremap <leader>fc :call FoldComments()<CR>
+nnoremap <leader>fo :call ShowComments()<CR>
+
 " Defines the external ack-like program which CtrlSF uses as source
 " If nothing is specified, CtrlSF will try ag first and fallback to ack if ag is not available
 let g:ctrlsf_ackprg = 'ag'
