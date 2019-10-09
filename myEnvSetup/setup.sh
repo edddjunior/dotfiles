@@ -153,7 +153,10 @@ echo "Ready."
 
 # Tools
 npm install -g vtop
+
 sudo apt install neofetch
+
+sudo sed -i "s/NoDisplay=true/NoDisplay=false/g" /etc/xdg/autostart/*.desktop
 
 # TRIM SSD
 echo "TRIM SSD... ##########################################################################################################################################################################"
