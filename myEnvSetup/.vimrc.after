@@ -46,6 +46,9 @@ let g:ctrlsf_ackprg = 'ag'
 "" APPEARANCE
 ""
 
+" Add spaces after comment delimiters
+let g:NERDSpaceDelims = 1
+
 " Keeps right color scheme in vim with tmux
 set background=dark
 
