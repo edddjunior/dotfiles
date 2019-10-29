@@ -22,7 +22,7 @@ echo "Ready."
 
 # Other stuff
 echo "Other Stuff... ##########################################################################################################################################################################"
-sudo apt-get install build-essential -y
+sudo apt-get install -y build-essential autoconf bison libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
 
 # Curl and Wget
 echo "Installing Curl and Wget... ##########################################################################################################################################################################"
