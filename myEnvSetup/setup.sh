@@ -96,7 +96,7 @@ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add
 sudo apt-get install apt-transport-https
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 sudo apt-get update && sudo apt-get install elasticsearch
-sudo systemctl start elasticsearch.service && sudo systemctl stop elasticsearch.service
+sudo systemctl disable elasticsearch
 echo "Ready."
 
 # Postgres
@@ -109,13 +109,13 @@ sudo service postgresql restart
 psql -U postgres -c "ALTER USER postgres WITH ENCRYPTED PASSWORD '${postgresql_password}'";
 sudo sed -i '/^local   all/s/trust/md5/' /etc/postgresql/${postgresql_version}/main/pg_hba.conf
 sudo service postgresql restart
+systemctl disable postgresql
 echo "Ready."
 
 # Redis
 echo "Redis... #############################################################################################################################################################"
 sudo apt-get install redis -y
-sudo systemctl start redis-server && sudo systemctl status redis
-sudo systemctl stop redis
+sudo systemctl disable elasticsearch
 echo "Ready."
 
 # Regolith
