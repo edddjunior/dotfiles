@@ -101,7 +101,6 @@ echo "Ready."
 echo "Postgres... ##########################################################################################################################################################"
 sudo apt-get install postgresql-${postgresql_version} -y
 sudo apt-get install libpq-dev -y
-
 sudo sed -i '/^local   all/s/peer/trust/' /etc/postgresql/${postgresql_version}/main/pg_hba.conf
 sudo service postgresql restart
 psql -U postgres -c "ALTER USER postgres WITH ENCRYPTED PASSWORD '${postgresql_password}'";
