@@ -107,7 +107,7 @@ sudo service postgresql restart
 psql -U postgres -c "ALTER USER postgres WITH ENCRYPTED PASSWORD '${postgresql_password}'";
 sudo sed -i '/^local   all/s/trust/md5/' /etc/postgresql/${postgresql_version}/main/pg_hba.conf
 sudo service postgresql restart
-systemctl disable postgresql
+sudo systemctl disable postgresql
 echo "Ready."
 
 # Redis
