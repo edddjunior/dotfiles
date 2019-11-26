@@ -71,7 +71,7 @@ echo "Ready."
 # RVM
 echo "RVM... ###############################################################################################################################################################"
 \curl -sSL https://get.rvm.io | bash
-sudo source ~/.rvm/scripts/rvm
+source ~/.rvm/scripts/rvm
 echo "Ready."
 
 # Ruby
