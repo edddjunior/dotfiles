@@ -125,8 +125,8 @@ sudo apt-get install regolith-desktop -y
 mkdir -p ~/.config/regolith/i3
 cp /etc/regolith/i3/config ~/.config/regolith/i3/config
 
-sed -i "s/^set $terminal_path/set $terminal_path /usr/bin/gnome-terminal/g" /.config/regolith/i3/config
-sudo sed -i "s/NoDisplay=true/i3xrocks.date.format:       + %d/%m %H:%M %p/g" /etc/regolith/styles/i3xrocks
+sudo sed -i 's,^set $terminal_path.*,set $terminal_path /usr/bin/gnome-terminal,g' ~/.config/regolith/i3/config
+sudo sed -i 's,^i3xrocks.date.format:.*,i3xrocks.date.format:       + %d/%m %H:%M %p,g' /etc/regolith/styles/i3xrocks
 echo "Ready."
 
 # Tmux
