@@ -6,8 +6,6 @@ echo "BORAAAAA! É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
 echo "Loading variables... #################################################################################################################################################"
 git_username=''
 git_email=''
-nvm_version='v0.34.0'
-node_version='10.16.3'
 ruby_version='2.6.4'
 rails_version='6.0.0'
 postgresql_version='10'
@@ -46,7 +44,7 @@ echo "Ready."
 
 # NVM
 echo "NVM... ###############################################################################################################################################################"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_version}/install.sh | bash
+curl -o- https://raw.github.com/nvm-sh/nvm/blob/master/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -54,9 +52,8 @@ echo "Ready."
 
 # Node.js
 echo "Node... ##############################################################################################################################################################"
-nvm install ${node_version}
-nvm alias default ${node_version}
-nvm use default
+nvm install --lts
+nvm use --lts
 echo "Ready."
 
 # Yarn
