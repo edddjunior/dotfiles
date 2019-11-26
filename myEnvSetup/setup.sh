@@ -39,10 +39,8 @@ echo "Ready."
 # Git and its conf
 echo "Git... ###############################################################################################################################################################"
 sudo apt-get install git -y
-
 git config --global user.name "${git_username}"
 git config --global user.email "${git_email}"
-
 sudo apt-get install -y gitk
 echo "Ready."
 
@@ -124,7 +122,6 @@ sudo add-apt-repository -y ppa:kgilmer/regolith-stable
 sudo apt-get install regolith-desktop -y
 mkdir -p ~/.config/regolith/i3
 cp /etc/regolith/i3/config ~/.config/regolith/i3/config
-
 sudo sed -i 's,^set $terminal_path.*,set $terminal_path /usr/bin/gnome-terminal,g' ~/.config/regolith/i3/config
 sudo sed -i 's,^i3xrocks.date.format:.*,i3xrocks.date.format:       + %d/%m %H:%M %p,g' /etc/regolith/styles/i3xrocks
 echo "Ready."
@@ -140,7 +137,6 @@ echo "Ready."
 echo "Vim... ###############################################################################################################################################################"
 sudo apt-get install vim -y && sudo apt-get install vim-gnome -y
 curl -L https://bit.ly/janus-bootstrap | bash
-
 cd ~/.vim/janus/vim/tools/
 git clone https://github.com/jiangmiao/auto-pairs.git
 git clone https://github.com/yggdroot/indentline.git
@@ -150,7 +146,6 @@ git clone https://github.com/kien/ctrlp.vim.git
 git clone https://github.com/tpope/vim-rails.git
 git clone https://github.com/tpope/vim-ragtag.git
 sudo apt-get install silversearcher-ag -y
-
 cd ~
 wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.after
 wget -O ~/.vimrc.before https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.before
@@ -161,7 +156,6 @@ echo "Zsh & OhMyZsh... #########################################################
 cd ~
 sudo apt-get install fonts-powerline
 sudo apt-get install zsh -y
-
 yes | sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.zshrc
 echo "Ready."
@@ -169,7 +163,6 @@ echo "Ready."
 # Tools
 echo "Tools... #############################################################################################################################################################"
 npm install -g vtop
-
 sudo apt install neofetch
 echo "Ready."
 
