@@ -169,6 +169,7 @@ echo "Ready."
 
 # Allows to remove apps from automatic start
 echo "This allows to remove apps from automatic start... ###################################################################################################################"
+cd ~
 sudo sed -i "s/NoDisplay=true/NoDisplay=false/g" /etc/xdg/autostart/*.desktop
 echo "Ready."
 
