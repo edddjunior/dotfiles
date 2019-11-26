@@ -4,14 +4,14 @@ echo "BORAAAAA! É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
 
 # Variables
 echo "Loading variables... #################################################################################################################################################"
-git_username='edddjunior'
-git_email='edsonbergamojunior@gmail.com'
+git_username=''
+git_email=''
 nvm_version='v0.34.0'
 node_version='10.16.3'
 ruby_version='2.6.4'
 rails_version='6.0.0'
 postgresql_version='10'
-postgresql_password='81035810'
+postgresql_password=''
 echo "Ready."
 
 # Update and upgrade
