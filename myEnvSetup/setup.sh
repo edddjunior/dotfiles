@@ -150,12 +150,13 @@ wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/mas
 wget -O ~/.vimrc.before https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.before
 echo "Ready."
 
-# Zsh and OhMyZsh
+# Zsh
 echo "Zsh... ###############################################################################################################################################################"
 cd ~
 sudo apt-get install fonts-powerline
 sudo apt-get install zsh -y
 
+# OhMyZsh
 echo "OhMyZsh... ###########################################################################################################################################################"
 yes | sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.zshrc
