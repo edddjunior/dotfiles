@@ -112,7 +112,7 @@ echo "Ready."
 # Redis
 echo "Redis... #############################################################################################################################################################"
 sudo apt-get install redis -y
-sudo systemctl disable elasticsearch
+sudo systemctl disable redis-server
 echo "Ready."
 
 # Regolith
