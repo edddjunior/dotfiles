@@ -4,10 +4,14 @@ echo "BORAAAAA! É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
 
 # Variables
 echo "Loading variables... #################################################################################################################################################"
+# Everything else will get their last stable versions.
 git_username=''
 git_email=''
+# Search for the documentation if you want to change Java's version. Because it sucks :/
+java_version='openjdk-8-jdk'
 ruby_version='2.6.4'
-rails_version='6.0.0'
+rails_version='6.0.1'
+elasticsearch_version='7.x'
 postgresql_version='10'
 postgresql_password=''
 echo "Ready."
@@ -67,7 +71,7 @@ echo "Ready."
 
 # Java
 echo "Java... ##############################################################################################################################################################"
-sudo apt-get install openjdk-8-jdk -y
+sudo apt-get install ${java_version} -y
 echo "Ready."
 
 # RVM
@@ -88,15 +92,6 @@ echo "Rails... #################################################################
 gem install rails -v ${rails_version}
 echo "Ready."
 
-# Elasticsearch
-echo "Elasticsearch... #####################################################################################################################################################"
-wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-sudo apt-get install apt-transport-https
-echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-sudo apt-get update && sudo apt-get install elasticsearch
-sudo systemctl disable elasticsearch
-echo "Ready."
-
 # Postgres
 echo "Postgres... ##########################################################################################################################################################"
 sudo apt-get install postgresql-${postgresql_version} -y
@@ -113,6 +108,15 @@ echo "Ready."
 echo "Redis... #############################################################################################################################################################"
 sudo apt-get install redis -y
 sudo systemctl disable redis-server
+echo "Ready."
+
+# Elasticsearch
+echo "Elasticsearch... #####################################################################################################################################################"
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo apt-get install apt-transport-https
+echo "deb https://artifacts.elastic.co/packages/${elasticsearch_version}/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-${elasticsearch_version}.list
+sudo apt-get update && sudo apt-get install elasticsearch
+sudo systemctl disable elasticsearch
 echo "Ready."
 
 # Regolith
@@ -188,7 +192,64 @@ sudo wget -O /etc/cron.daily/TRIM_ssd https://raw.githubusercontent.com/edddjuni
 sudo chmod +x /etc/cron.daily/TRIM_ssd
 echo "Ready."
 
-echo "Finished!"
-read -p "Press Enter to finish it. The computer will reboot now!"
+echo "Wanna check if everything is working? You may need to interact with terminal (just close and stop stuff)."
+read -p "Yes will check. No will finish setup. (y/n)" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	# Checking results
+	echo "Checking results... ##################################################################################################################################################"
+	echo "Git:"
+	git config --list
+  	echo "Your public SSH key (~/.ssh/id_rsa.pub):"
+  	cat /.ssh/id_rsa.pub
+  	echo "Share it with the services you want. BE CAREFUL!"
+	echo "NVM:"	
+	nvm - version
+	echo "Node:"	
+	node -v
+	echo "Npm:"	
+	npm -v 
+	echo "Yarn:"	
+	yarn -v
+	echo "RVM:"
+	rvm
+	echo "Ruby:"
+	ruby -v
+	echo "Rails:"	
+	rails -v
+	echo "Java:"
+	java -version
+
+	sudo systemctl start postgresql.service && sudo systemctl start redis-server.service && sudo systemctl start elasticsearch.service
+	
+	echo "Elasticsearch:"
+	curl -XGET 'localhost:9200'
+
+	echo "Postgres:"
+	echo "You gotta check this manually."
+	echo "Open a terminal, type 'psql -U postgres', and fill in your password."
+	echo "If everything is alright, you should see psql shell."
+
+	echo "Redis:"
+	echo "You also have to check this manually."
+	echo "Open a terminal, type 'redis-cli', and then type ping."
+	echo "If everything is alright, the output should be PONG."
+
+	systemctl stop postgresql.service
+	systemctl stop redis-server.service
+	systemctl stop elasticsearch.service
+
+	echo "Don't forget you have to start the services when you want. (Use 'systemctl start example.service')"	
+
+	echo "Ready."
+elif [[ $REPLY =~ ^[Nn]$ ]]
+then
+	echo "Finished!"
+	read -p "Press Enter to finish it. The computer will reboot now!"
+else
+	echo "Finished!"
+	read -p "Press Enter to finish it. The computer will reboot now!"
+fi
 
 sudo reboot
