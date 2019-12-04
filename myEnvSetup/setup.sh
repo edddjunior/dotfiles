@@ -7,7 +7,7 @@ echo "Loading variables... #####################################################
 # Everything else will get their last stable versions.
 git_username=''
 git_email=''
-# Search for the documentation if you want to change Java's version. Because it sucks :/
+# Search for the documentation if you want to change Java's version. It sucks :/
 java_version='openjdk-8-jdk'
 ruby_version='2.6.4'
 rails_version='6.0.1'
@@ -159,7 +159,7 @@ echo "Zsh... ###################################################################
 cd ~
 sudo apt-get install fonts-powerline
 sudo apt-get install zsh -y
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh)
 echo "Ready."
 
 # OhMyZsh
@@ -201,48 +201,44 @@ then
 	echo "Checking results... ##################################################################################################################################################"
 	echo "Git:"
 	git config --list
-  	echo "Your public SSH key (~/.ssh/id_rsa.pub):"
-  	cat /.ssh/id_rsa.pub
-  	echo "Share it with the services you want. BE CAREFUL!"
-	echo "NVM:"	
-	nvm - version
-	echo "Node:"	
+ 	echo "Your public SSH key (~/.ssh/id_rsa.pub):"
+	cat ~/.ssh/id_rsa.pub
+	echo "Share it with the services you want. BE CAREFUL!"
+	echo "NVM:"
+	nvm
+	echo "Node:"
 	node -v
-	echo "Npm:"	
-	npm -v 
-	echo "Yarn:"	
+	echo "Npm:"
+	npm -v
+	echo "Yarn:"
 	yarn -v
 	echo "RVM:"
 	rvm
 	echo "Ruby:"
 	ruby -v
-	echo "Rails:"	
+	echo "Rails:"
 	rails -v
 	echo "Java:"
 	java -version
 
 	sudo systemctl start postgresql.service && sudo systemctl start redis-server.service && sudo systemctl start elasticsearch.service
-	
+
 	echo "Elasticsearch:"
 	curl -XGET 'localhost:9200'
 
 	echo "Postgres:"
-	echo "You gotta check this manually."
-	echo "Open a terminal, type 'psql -U postgres', and fill in your password."
-	echo "If everything is alright, you should see psql shell."
+  	PGPASSWORD=${postgresql_password} psql -U postgres -c "\du"
 
 	echo "Redis:"
-	echo "You also have to check this manually."
-	echo "Open a terminal, type 'redis-cli', and then type ping."
-	echo "If everything is alright, the output should be PONG."
+  	echo "ping..."
+  	redis-cli -c "ping"
 
-	systemctl stop postgresql.service
-	systemctl stop redis-server.service
-	systemctl stop elasticsearch.service
-
-	echo "Don't forget you have to start the services when you want. (Use 'systemctl start example.service')"	
+	sudo systemctl stop postgresql.service && systemctl stop redis-server.service && systemctl stop elasticsearch.service
 
 	echo "Ready."
+
+	echo "Finished!"
+	read -p "Press Enter to finish it. The computer will reboot now!"
 elif [[ $REPLY =~ ^[Nn]$ ]]
 then
 	echo "Finished!"
