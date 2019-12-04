@@ -139,6 +139,7 @@ echo "Ready."
 # Vim
 echo "Vim... ###############################################################################################################################################################"
 sudo apt-get install vim -y && sudo apt-get install vim-gnome -y
+sudo apt-get install silversearcher-ag -y
 curl -L https://bit.ly/janus-bootstrap | bash
 cd ~/.vim/janus/vim/tools/
 git clone https://github.com/jiangmiao/auto-pairs.git
@@ -148,7 +149,6 @@ git clone https://github.com/rking/ag.vim.git
 git clone https://github.com/kien/ctrlp.vim.git
 git clone https://github.com/tpope/vim-rails.git
 git clone https://github.com/tpope/vim-ragtag.git
-sudo apt-get install silversearcher-ag -y
 cd ~
 wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.after
 wget -O ~/.vimrc.before https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.before
