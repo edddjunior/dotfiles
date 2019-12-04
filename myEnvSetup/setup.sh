@@ -7,7 +7,7 @@ echo "Loading variables... #####################################################
 # Everything else will get their last stable versions.
 git_username=''
 git_email=''
-# Search for the documentation if you want to change Java's version. It sucks :/
+# Search for the documentation if you want to change Java's version. Because it sucks :/
 java_version='openjdk-8-jdk'
 ruby_version='2.6.4'
 rails_version='6.0.1'
@@ -192,7 +192,7 @@ sudo wget -O /etc/cron.daily/TRIM_ssd https://raw.githubusercontent.com/edddjuni
 sudo chmod +x /etc/cron.daily/TRIM_ssd
 echo "Ready."
 
-echo "Wanna check if everything is working? You may need to interact with terminal (just close and stop stuff)."
+echo "Wanna check if everything is working? You may need to interact with terminal (just close and stop stuff if needed)."
 read -p "Yes will check. No will finish setup. (y/n)" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -227,13 +227,18 @@ then
 	curl -XGET 'localhost:9200'
 
 	echo "Postgres:"
-  	PGPASSWORD=${postgresql_password} psql -U postgres -c "\du"
+  PGPASSWORD=${postgresql_password} psql -U postgres -c "\du"
 
 	echo "Redis:"
-  	echo "ping..."
-  	redis-cli -c "ping"
+  echo "ping..."
+  redis-cli -c "ping"
 
 	sudo systemctl stop postgresql.service && systemctl stop redis-server.service && systemctl stop elasticsearch.service
+
+  echo "Neofetch:"
+  neofetch
+  echo "Vtop:"
+  echo "There's no way to test here. Just type vtop in another terminal."
 
 	echo "Ready."
 
