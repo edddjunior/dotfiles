@@ -103,6 +103,7 @@ alias g="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
+alias cclip="xclip -selection clipboard"
 
 # This makes it faster to reset terminal
 alias rs="reset"
