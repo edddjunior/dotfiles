@@ -172,6 +172,7 @@ echo "Ready."
 echo "Tools... #############################################################################################################################################################"
 npm install -g vtop
 sudo apt install neofetch
+sudo apt install imagemagick
 echo "Ready."
 
 # Allows to remove apps from automatic start
