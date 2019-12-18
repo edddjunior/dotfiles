@@ -171,8 +171,9 @@ echo "Ready."
 # Tools
 echo "Tools... #############################################################################################################################################################"
 npm install -g vtop
-sudo apt install neofetch
-sudo apt install imagemagick
+sudo apt install neofetch -y
+sudo apt install imagemagick -y
+sudo apt-get install openssh-server -y
 echo "Ready."
 
 # Allows to remove apps from automatic start
@@ -193,12 +194,17 @@ sudo wget -O /etc/cron.daily/TRIM_ssd https://raw.githubusercontent.com/edddjuni
 sudo chmod +x /etc/cron.daily/TRIM_ssd
 echo "Ready."
 
+# Firewall
+echo "FIrewall... ##########################################################################################################################################################"
+sudo ufw enable
+echo "Ready."
+
+# Checking results
 echo "Wanna check if everything is working? You may need to interact with terminal (just close and stop stuff if needed)."
 read -p "Yes will check. No will finish setup. (y/n)" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	# Checking results
 	echo "Checking results... ##################################################################################################################################################"
 	echo "Git:"
 	git config --list
