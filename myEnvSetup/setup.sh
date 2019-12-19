@@ -5,15 +5,15 @@ echo "BORAAAAA! É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
 # Variables
 echo "Loading variables... #################################################################################################################################################"
 # Everything else will get their last stable versions.
-git_username=''
-git_email=''
+git_username='edddjunior'
+git_email='edsonbergamojunior@gmail.com'
 # Search for the documentation if you want to change Java's version. Because it sucks :/
 java_version='openjdk-8-jdk'
 ruby_version='2.6.4'
 rails_version='6.0.1'
 elasticsearch_version='7.x'
 postgresql_version='10'
-postgresql_password=''
+postgresql_password='81035810'
 echo "Ready."
 
 # Update and upgrade
@@ -173,7 +173,6 @@ echo "Tools... #################################################################
 npm install -g vtop
 sudo apt-get install neofetch -y
 sudo apt-get install imagemagick -y
-sudo apt-get install openssh-server -y
 sudo apt-get install net-tools -y
 echo "Ready."
 
@@ -195,10 +194,37 @@ sudo wget -O /etc/cron.daily/TRIM_ssd https://raw.githubusercontent.com/edddjuni
 sudo chmod +x /etc/cron.daily/TRIM_ssd
 echo "Ready."
 
-# Firewall
-echo "FIrewall... ##########################################################################################################################################################"
+# Firewall and SSH server
+echo "FIrewall and SSH server. #############################################################################################################################################"
 sudo ufw enable
+sudo apt-get install openssh-server -y
+sudo ufw allow OpenSSH
+sudo sed -i "s/#LoginGraceTime 2m/LoginGraceTime 30/g" /etc/ssh/sshd_config
+sudo sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin no/g" /etc/ssh/sshd_config
+sudo sed -i "s/#MaxSessions 10/MaxSessions 1/g" /etc/ssh/sshd_config
+sudo systemctl restart sshd.service
 echo "Ready."
+
+# 2FA for SSH server
+echo "Wanna setup Two-Factor-Authentication for the SSH server? Pay attention."
+read -p "Yes will check. No will continue setup. (y/n)" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  echo "Setting up 2fa for SSH server... ###################################################################################################################################"
+  sudo apt-get install libpam-google-authenticator -y
+  sudo sed -i "s/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g" /etc/ssh/sshd_config
+  sudo echo -e "\nToken authentication\nauth required pam_google_authenticator.so" >> /etc/pam.d/sshd
+  yes | google-authenticator
+  sudo systemctl restart sshd.service
+  echo "Ready."
+elif [[ $REPLY =~ ^[Nn]$ ]]
+then
+	read -p "Press Enter to finish it."
+	echo "Finished!"
+else
+	read -p "Press Enter to finish it."
+	echo "Finished!"
+fi
 
 # Checking results
 echo "Wanna check if everything is working? You may need to interact with terminal (just close and stop stuff if needed)."
@@ -206,7 +232,7 @@ read -p "Yes will check. No will finish setup. (y/n)" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	echo "Checking results... ##################################################################################################################################################"
+	echo "Checking results... ################################################################################################################################################"
 	echo "Git:"
 	git config --list
  	echo "Your public SSH key (~/.ssh/id_rsa.pub):"
@@ -248,17 +274,20 @@ then
   echo "Vtop:"
   echo "There's no way to test here. Just type vtop in another terminal."
 
+  echo "Firewall:"
+  sudo ufw status numbered
+
 	echo "Ready."
 
 	echo "Finished!"
 	read -p "Press Enter to finish it. The computer will reboot now!"
 elif [[ $REPLY =~ ^[Nn]$ ]]
 then
-	echo "Finished!"
 	read -p "Press Enter to finish it. The computer will reboot now!"
+	echo "Finished!"
 else
-	echo "Finished!"
 	read -p "Press Enter to finish it. The computer will reboot now!"
+	echo "Finished!"
 fi
 
 sudo reboot
