@@ -5,15 +5,15 @@ echo "BORAAAAA! É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
 # Variables
 echo "Loading variables... #################################################################################################################################################"
 # Everything else will get their last stable versions.
-git_username='edddjunior'
-git_email='edsonbergamojunior@gmail.com'
+git_username=''
+git_email=''
 # Search for the documentation if you want to change Java's version. Because it sucks :/
 java_version='openjdk-8-jdk'
 ruby_version='2.6.4'
 rails_version='6.0.1'
 elasticsearch_version='7.x'
 postgresql_version='10'
-postgresql_password='81035810'
+postgresql_password=''
 echo "Ready."
 
 # Update and upgrade
