@@ -213,7 +213,9 @@ then
   echo "Setting up 2fa for SSH server... ###################################################################################################################################"
   sudo apt-get install libpam-google-authenticator -y
   sudo sed -i "s/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g" /etc/ssh/sshd_config
-  sudo echo -e "\nToken authentication\nauth required pam_google_authenticator.so" >> /etc/pam.d/sshd
+  sudo su
+  echo -e "\n#Token authentication\nauth required pam_google_authenticator.so" >> /etc/pam.d/sshd
+  exit
   yes | google-authenticator
   sudo systemctl restart sshd.service
   echo "Ready."
