@@ -202,7 +202,7 @@ sudo ufw allow OpenSSH
 sudo sed -i "s/#LoginGraceTime 2m/LoginGraceTime 30/g" /etc/ssh/sshd_config
 sudo sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin no/g" /etc/ssh/sshd_config
 sudo sed -i "s/#MaxSessions 10/MaxSessions 2/g" /etc/ssh/sshd_config
-sudo sed -i "s/#@student        -       maxlogins       4/@edddjunior      -       maxlogins       2/g" /etc/ssh/sshd_config
+sudo sed -i "s/#@student        -       maxlogins       4/@edddjunior      -       maxlogins       2/g" /etc/security/limits.conf
 sudo systemctl restart sshd.service
 echo "Ready."
 
