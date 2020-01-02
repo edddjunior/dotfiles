@@ -81,7 +81,7 @@ cd ~/.asdf
 git checkout "$(git describe --abbrev=0 --tags)"
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bash_profile
 echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bash_profile
-sudo chmod 777 .asdf/
+sudo chmod 755 .asdf/
 echo "Ready."
 
 # Ruby
