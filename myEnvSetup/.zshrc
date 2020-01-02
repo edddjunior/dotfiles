@@ -120,3 +120,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Loads NPM
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
