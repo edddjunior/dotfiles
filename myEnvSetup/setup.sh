@@ -160,7 +160,7 @@ echo "Zsh... ###################################################################
 cd ~
 sudo apt-get install fonts-powerline
 sudo apt-get install zsh -y
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
 echo "Ready."
 
 # OhMyZsh
