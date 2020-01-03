@@ -1,21 +1,15 @@
-# TODO URGENTLY -> rewrite this readme
 # myEnvSetup
-- Zsh (Oh My Zsh)
-- Tmux
-- Vim (Janus + some plugin(s))
-- some bash scripting 
+### These are my dotfiles, and setup.sh is the automator that creates and sets up all the things I need in my machine.
+### Enjoy if you think something here is useful to you.
 
-## Some dependencies
-- It's necessary to install powerline fonts for zsh agnoster theme to work
-##### sudo apt-get install fonts-powerline
+### BEFORE RUNNING THE SETUP: Provide your data at the top of the file
+### WHILE THE SETUP IS RUNNING: You may need to interact with the script
 
-- It's necessary to install Ag - The Silver Searcher to for CtrlSF/ag to work
-##### apt-get install silversearcher-ag
+### To download and initialize setup:
+```
+$ wget -O setup.sh https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.setup.sh
+# make the changes you need..
+$ sudo bash setup.sh
+```
 
-- It's necessary to install xclip for tmux y command to work
-##### sudo apt-get install xclip
-
-- Its necessary to install GVim for "+y "+p commands to work
-
-- Don't forget that adding this command in .vimrc should solve the problem with Vim colors in tmux:
-##### set background=dark
+# TODO: improve this readme
