@@ -216,7 +216,7 @@ then
   sudo apt-get install libpam-google-authenticator -y
   sudo sed -i "s/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g" /etc/ssh/sshd_config
   sudo su -c "echo -e '\n#Token authentication\nauth required pam_google_authenticator.so' >> /etc/pam.d/sshd"
-  yes | google-authenticator
+  google-authenticator
   sudo systemctl restart sshd.service
   echo "Ready."
 elif [[ $REPLY =~ ^[Nn]$ ]]
