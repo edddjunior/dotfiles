@@ -1,4 +1,4 @@
-# TODO URGENTLY -> rewrite this ReadMe
+# TODO URGENTLY -> rewrite this readme
 # myEnvSetup
 - Zsh (Oh My Zsh)
 - Tmux
