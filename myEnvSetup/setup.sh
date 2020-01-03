@@ -74,20 +74,16 @@ echo "Java... ##################################################################
 sudo apt-get install ${java_version} -y
 echo "Ready."
 
-# ASDF
-echo "ASDF... ##############################################################################################################################################################"
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-cd ~/.asdf
-git checkout "$(git describe --abbrev=0 --tags)"
-echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bash_profile
-echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bash_profile
-sudo chmod 755 .asdf/
+# RVM
+echo "RVM... ###############################################################################################################################################################"
+\curl -sSL https://get.rvm.io | bash
+source ~/.rvm/scripts/rvm
 echo "Ready."
 
 # Ruby
 echo "Ruby... ##############################################################################################################################################################"
-asdf install ruby ${ruby_version}
-asdf global ruby ${ruby_version}
+rvm install ${ruby_version}
+rvm use ${ruby_version}
 echo "Ready."
 
 # Rails
