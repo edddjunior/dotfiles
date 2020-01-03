@@ -105,3 +105,9 @@ silent! nmap <silent> <leader>b :BuffergatorToggle<CR>
 
 " Lets "´" switch fast to next buffer (Buffergator)
 silent! nmap <silent> ´ :BuffergatorMruCycleNext<CR>
+
+" put the cursor out of surrounds in insert mode with 'ctrl + x'
+imap <C-x><C-x> <C-o>a
+
+" put the cursor after current word in normal mode
+nmap <leader>e ea
