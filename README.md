@@ -10,7 +10,7 @@ You may need to interact with the script
 ### To download and initialize setup:
 ```
 $ wget -O setup.sh https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.setup.sh
-# make the changes you need..
+# make the changes you need...
 $ sudo bash setup.sh
 ```
 
