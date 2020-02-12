@@ -11,6 +11,7 @@ git_email=''
 java_version='openjdk-8-jdk'
 ruby_version='2.6.4'
 rails_version='6.0.1'
+node_version='12.16.0'
 elasticsearch_version='7.x'
 postgresql_version='10'
 postgresql_password=''
@@ -20,12 +21,6 @@ echo "Ready."
 echo "Updating repositories... #############################################################################################################################################"
 sudo apt-get update -y
 sudo apt-get upgrade -y
-echo "Ready."
-
-# Chrome
-echo "Installing Chrome... #################################################################################################################################################"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
 echo "Ready."
 
 # Other stuff
@@ -46,27 +41,25 @@ git config --global user.email "${git_email}"
 sudo apt-get install -y gitk
 echo "Ready."
 
-# NVM
-echo "NVM... ###############################################################################################################################################################"
-mkdir ~/.nvm
-export NVM_DIR="$HOME/.nvm" && (
-  git clone https://github.com/creationix/nvm.git "$NVM_DIR"
-  cd "$NVM_DIR"
-  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-) && \. "$NVM_DIR/nvm.sh"
+# Chrome
+echo "Installing Chrome... #################################################################################################################################################"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 echo "Ready."
 
-# Node.js
-echo "Node... ##############################################################################################################################################################"
-nvm install --lts
-nvm use --lts
+# Zsh
+echo "Zsh... ###############################################################################################################################################################"
+cd ~
+sudo apt-get install fonts-powerline
+sudo apt-get install zsh -y
+chsh -s $(which zsh)
+sed -i 's/bash/zsh/g' /etc/passwd
 echo "Ready."
 
-# Yarn
-echo "Yarn... ##############################################################################################################################################################"
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install --no-install-recommends yarn
+# OhMyZsh
+echo "OhMyZsh... ###########################################################################################################################################################"
+yes | sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.zshrc
 echo "Ready."
 
 # Java
@@ -74,16 +67,42 @@ echo "Java... ##################################################################
 sudo apt-get install ${java_version} -y
 echo "Ready."
 
-# RVM
-echo "RVM... ###############################################################################################################################################################"
-\curl -sSL https://get.rvm.io | bash
-source ~/.rvm/scripts/rvm
+# VirtualBox
+echo "VirtualBox... ########################################################################################################################################################"
+sudo apt-get install virtualbox virtualbox-ext-pack -y
+echo "Ready."
+
+# ASDF
+echo "ASDF... ##############################################################################################################################################################"
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+cd ~/.asdf
+git checkout "$(git describe --abbrev=0 --tags)"
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.zshrc
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.zshrc
+source ~/.zshrc
+asdf --version
+echo "Ready."
+
+# Node.js
+echo "Node... ##############################################################################################################################################################"
+asdf plugin-add nodejs
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+asdf install nodejs ${node_version}
+asdf global nodejs ${node_version}
+echo "Ready."
+
+# Yarn
+echo "Yarn... ##############################################################################################################################################################"
+npm install --global yarn
 echo "Ready."
 
 # Ruby
 echo "Ruby... ##############################################################################################################################################################"
-rvm install ${ruby_version}
-rvm use ${ruby_version}
+asdf plugin-add ruby
+asdf install ${ruby_version}
+asdf global ${ruby_version}
 echo "Ready."
 
 # Rails
@@ -154,21 +173,6 @@ wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/mas
 wget -O ~/.vimrc.before https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.before
 echo "Ready."
 
-# Zsh
-echo "Zsh... ###############################################################################################################################################################"
-cd ~
-sudo apt-get install fonts-powerline
-sudo apt-get install zsh -y
-chsh -s $(which zsh)
-sed -i 's/bash/zsh/g' /etc/passwd
-echo "Ready."
-
-# OhMyZsh
-echo "OhMyZsh... ###########################################################################################################################################################"
-yes | sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.zshrc
-echo "Ready."
-
 # Tools
 echo "Tools... #############################################################################################################################################################"
 npm install -g vtop
@@ -185,7 +189,7 @@ echo "Ready."
 
 # SSH keys
 echo "Generate SSH Keys... #################################################################################################################################################"
-echo -e "\n\n\n" | ssh-keygen -t rsa
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/ -C "${git_email}"
 echo "Ready."
 
 # TRIM SSD
@@ -207,9 +211,9 @@ sudo sed -i "s/#@student        -       maxlogins       4/@edddjunior      -    
 sudo systemctl restart sshd.service
 echo "Ready."
 
-# 2FA for SSH server
-echo "Wanna setup Two-Factor-Authentication for the SSH server? Pay attention."
-read -p "Yes will check. No will continue setup. (y/n)" -n 1 -r
+# MFA for SSH server
+echo "Wanna setup Multi-Factor-Authentication for the SSH server? Pay attention."
+read -p "Yes will setup MFA. No will continue installation setup. (y/n)" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   echo "Setting up 2fa for SSH server... ###################################################################################################################################"
@@ -237,11 +241,15 @@ then
 	echo "Checking results... ################################################################################################################################################"
 	echo "Git:"
 	git config --list
- 	echo "Your public SSH key (~/.ssh/id_rsa.pub):"
-	cat ~/.ssh/id_rsa.pub
+ 	echo "Your public SSH key (~/.ssh/id_ed25519.pub):"
+	cat ~/.ssh/id_ed25519.pub
 	echo "Share it with the services you want. BE CAREFUL!"
-	echo "NVM:"
-	nvm
+	echo "Java:"
+	java -version
+	echo "VirtualBox:"
+	vboxmanage --version
+	echo "ASDF:"
+	asdf --version
 	echo "Node:"
 	node -v
 	echo "Npm:"
@@ -254,13 +262,8 @@ then
 	ruby -v
 	echo "Rails:"
 	rails -v
-	echo "Java:"
-	java -version
 
 	sudo systemctl start postgresql.service && sudo systemctl start redis-server.service && sudo systemctl start elasticsearch.service
-
-	echo "Elasticsearch:"
-	curl -XGET 'localhost:9200'
 
 	echo "Postgres:"
   PGPASSWORD=${postgresql_password} psql -U postgres -c "\du"
@@ -268,6 +271,9 @@ then
 	echo "Redis:"
   echo "ping..."
   redis-cli -c "ping"
+
+	echo "Elasticsearch:"
+	curl -XGET 'localhost:9200'
 
 	sudo systemctl stop postgresql.service && systemctl stop redis-server.service && systemctl stop elasticsearch.service
 
