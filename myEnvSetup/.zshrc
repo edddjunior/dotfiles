@@ -114,6 +114,3 @@ alias cdt="cd; cd .local/share/Trash/files/; ls -a"
 alias dt="cd ..; bash del.sh"
 # It deletes everything from Trash (also info files in /info)
 alias det="cd ..; rm -rf files/*; rm -rf info/*"
-
-# Loads NPM
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
