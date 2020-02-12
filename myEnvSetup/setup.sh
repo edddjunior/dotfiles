@@ -5,8 +5,8 @@ echo "BORAAAAA! É HORA DO SHOOOOOOOOOOOOOOOOOWWWWWWW!!!"
 # Variables
 echo "Loading variables... #################################################################################################################################################"
 # Everything else will get their last stable versions.
-git_username=''
-git_email=''
+git_username='edddjunior'
+git_email='edsonbergamojunior@gmail.com'
 # Search for the documentation if you want to change Java's version. Because it sucks :/
 java_version='openjdk-8-jdk'
 ruby_version='2.6.4'
@@ -14,7 +14,7 @@ rails_version='6.0.1'
 node_version='12.16.0'
 elasticsearch_version='7.x'
 postgresql_version='10'
-postgresql_password=''
+postgresql_password='81035810'
 echo "Ready."
 
 # Update and upgrade
@@ -25,7 +25,7 @@ echo "Ready."
 
 # Other stuff
 echo "Other Stuff... #######################################################################################################################################################"
-sudo apt-get install -y build-essential autoconf bison libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
+sudo apt-get install -y build-essential automake autoconf bison libssl-dev libyaml-dev libreadline-dev libxslt-dev libtool unixodbc-dev unzip zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
 echo "Ready."
 
 # Curl and Wget
@@ -101,8 +101,8 @@ echo "Ready."
 # Ruby
 echo "Ruby... ##############################################################################################################################################################"
 asdf plugin-add ruby
-asdf install ${ruby_version}
-asdf global ${ruby_version}
+asdf install ruby ${ruby_version}
+asdf global ruby ${ruby_version}
 echo "Ready."
 
 # Rails
