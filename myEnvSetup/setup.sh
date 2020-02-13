@@ -176,6 +176,7 @@ echo "Ready."
 # Tools
 echo "Tools... #############################################################################################################################################################"
 npm install -g vtop
+sudo apt install synaptic -y
 sudo apt-get install neofetch -y
 sudo apt-get install imagemagick -y
 sudo apt-get install net-tools -y
