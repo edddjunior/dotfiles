@@ -83,6 +83,8 @@ echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.zshrc
 echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.zshrc
 source ~/.zshrc
 asdf --version
+sudo chown -R $USER ~/.asdf/
+sudo chown -R $USER:$(id -gn $USER) /home/edddjunior/.config
 echo "Ready."
 
 # Node.js
