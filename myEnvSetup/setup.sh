@@ -257,8 +257,6 @@ then
 	npm -v
 	echo "Yarn:"
 	yarn -v
-	echo "RVM:"
-	rvm
 	echo "Ruby:"
 	ruby -v
 	echo "Rails:"
