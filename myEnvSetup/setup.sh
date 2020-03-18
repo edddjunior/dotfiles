@@ -50,7 +50,7 @@ echo "Ready."
 # Zsh
 echo "Zsh... ###############################################################################################################################################################"
 cd ~
-sudo apt-get install fonts-powerline
+sudo apt-get install fonts-powerline -y
 sudo apt-get install zsh -y
 chsh -s $(which zsh)
 sed -i 's/bash/zsh/g' /etc/passwd
