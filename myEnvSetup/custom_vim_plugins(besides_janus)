@@ -7,11 +7,11 @@ https://github.com/jiangmiao/auto-pairs.git
 https://github.com/dyng/ctrlsf.vim.git
 - ag.vim
 https://github.com/rking/ag.vim.git
-- vim-vue 
-https://github.com/posva/vim-vue.git
 - ctrlp
-https://github.com/kien/ctrlp.vim
+https://github.com/kien/ctrlp.vim.git
 - vim-rails
 https://github.com/tpope/vim-rails.git
 - vim-rtag
 https://github.com/tpope/vim-ragtag.git
+- vim-closetag
+https://github.com/alvan/vim-closetag.git
