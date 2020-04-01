@@ -19,3 +19,5 @@ https://github.com/alvan/vim-closetag.git
 https://github.com/Shougo/deoplete.nvim.git
 - vim-json
 https://github.com/leshill/vim-json.git
+- vim-javascript
+https://github.com/pangloss/vim-javascript.git
