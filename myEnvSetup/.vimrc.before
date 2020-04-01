@@ -1,6 +1,15 @@
 " Defines leader key
 let mapleader = ","
 
+" Keeps right color scheme in vim with tmux
+set background=dark
+" Keeps right encoding for filetype themes
+set encoding=UTF-8
+
+"" vim-javascript plugin:
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+
 "" close-tag plugin:
 "
 " These are the file extensions where this plugin is enabled.
