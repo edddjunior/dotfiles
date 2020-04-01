@@ -17,3 +17,5 @@ https://github.com/tpope/vim-ragtag.git
 https://github.com/alvan/vim-closetag.git
 - deoplete.nvim
 https://github.com/Shougo/deoplete.nvim.git
+- vim-json
+https://github.com/leshill/vim-json.git
