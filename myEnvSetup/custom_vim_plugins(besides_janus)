@@ -15,3 +15,5 @@ https://github.com/tpope/vim-rails.git
 https://github.com/tpope/vim-ragtag.git
 - vim-closetag
 https://github.com/alvan/vim-closetag.git
+- deoplete.nvim
+https://github.com/Shougo/deoplete.nvim.git
