@@ -21,5 +21,5 @@ https://github.com/Shougo/deoplete.nvim.git
 https://github.com/leshill/vim-json.git
 - vim-javascript
 https://github.com/pangloss/vim-javascript.git
-- vim-devicons
+- vim-devicons (this needs a monospaced NerdFont set as default in terminal to work | mine is Husklug nerd font regular)
 https://github.com/ryanoasis/vim-devicons.git
