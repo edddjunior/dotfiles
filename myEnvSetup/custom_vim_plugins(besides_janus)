@@ -23,3 +23,6 @@ https://github.com/leshill/vim-json.git
 https://github.com/pangloss/vim-javascript.git
 - vim-devicons (this needs a monospaced NerdFont set as default in terminal to work | mine is Husklug nerd font regular)
 https://github.com/ryanoasis/vim-devicons.git
+- vim-nerdtree-syntax-highlight
+https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
+(use https://github.com/edddjunior/vim-nerdtree-syntax-highlight if the first is not availale)
