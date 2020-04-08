@@ -1,6 +1,5 @@
 # myEnvSetup
-#### These are my dotfiles, and setup.sh is the automator that creates and sets up all the things I need in my machine.
-#### Enjoy if you think something here is useful to you.
+#### These are my dotfiles, and setup.sh is the automator that creates and sets up all the things I need in my machine. Enjoy if you get something useful to you.
 
 ### BEFORE RUNNING THE SETUP: 
 Provide your data at the top of the file
