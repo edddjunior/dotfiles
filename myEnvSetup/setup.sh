@@ -113,6 +113,7 @@ echo "Ready."
 
 # Rails
 echo "Rails... #############################################################################################################################################################"
+sudo apt-get install sqlite3 libsqlite3-dev
 gem install rails -v ${rails_version}
 echo "Ready."
 
