@@ -100,10 +100,14 @@ source $ZSH/oh-my-zsh.sh
 
 # Git commands
 alias g="git status"
+alias gl="git log"
 alias ga="git add"
 alias gc="git commit"
 alias gp="git push"
 alias cclip="xclip -selection clipboard"
+
+# Always opens Emacs in terminal
+alias emacs='emacs -nw'
 
 # This makes it faster to reset terminal
 alias rs="reset"
@@ -114,3 +118,7 @@ alias cdt="cd; cd .local/share/Trash/files/; ls -a"
 alias dt="cd ..; bash del.sh"
 # It deletes everything from Trash (also info files in /info)
 alias det="cd ..; rm -rf files/*; rm -rf info/*"
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
