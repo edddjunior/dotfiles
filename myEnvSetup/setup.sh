@@ -170,6 +170,8 @@ sudo curl -L https://bit.ly/janus-bootstrap | bash
 cd ~/.vim/janus/vim/tools/
 
 # General Plugins (very useful)
+git clone https://github.com/ryanoasis/vim-devicons.git
+git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
 git clone https://github.com/mattn/emmet-vim.git
 git clone https://github.com/jiangmiao/auto-pairs.git
 git clone https://github.com/yggdroot/indentline.git
