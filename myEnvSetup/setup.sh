@@ -168,13 +168,15 @@ sudo apt-get install silversearcher-ag -y
 sudo apt-get install rake
 sudo curl -L https://bit.ly/janus-bootstrap | bash
 cd ~/.vim/janus/vim/tools/
+
+# General Plugins (very useful)
+git clone https://github.com/mattn/emmet-vim.git
 git clone https://github.com/jiangmiao/auto-pairs.git
 git clone https://github.com/yggdroot/indentline.git
 git clone https://github.com/dyng/ctrlsf.vim.git
 git clone https://github.com/rking/ag.vim.git
 git clone https://github.com/kien/ctrlp.vim.git
-git clone https://github.com/tpope/vim-rails.git
-git clone https://github.com/tpope/vim-ragtag.git
+
 cd ~
 wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.after
 wget -O ~/.vimrc.before https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.before
