@@ -169,11 +169,12 @@ sudo apt-get install rake
 sudo curl -L https://bit.ly/janus-bootstrap | bash
 cd ~/.vim/janus/vim/tools/
 
-# General Plugins (very useful)
+# General Plugins (VERY USEFUL)
 git clone https://github.com/ryanoasis/vim-devicons.git
 git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
 git clone https://github.com/mattn/emmet-vim.git
 git clone https://github.com/jiangmiao/auto-pairs.git
+git clone https://tpope.io/vim/surround.git
 git clone https://github.com/yggdroot/indentline.git
 git clone https://github.com/dyng/ctrlsf.vim.git
 git clone https://github.com/rking/ag.vim.git
