@@ -1,8 +1,8 @@
 ""
-"" SETTINGS
+"" CONFIGS
 ""
 
-"Disable mouse
+"Disables mouse
 nnoremap <ScrollWheelUp> <nop>
 nnoremap <S-ScrollWheelUp> <nop>
 nnoremap <C-ScrollWheelUp> <nop>
@@ -17,40 +17,77 @@ nnoremap <S-ScrollWheelRight> <nop>
 nnoremap <C-ScrollWheelRight> <nop>
 set mouse=nicr
 
-" Disable arrows
+" Disables arrows
 for prefix in ['i', 'n', 'v']
   for key in ['<Up>', '<Down>', '<Left>', '<Right>']
     exe prefix . "noremap " . key . " <Nop>"
   endfor
 endfor
 
-" Folding comments
+" Comment folding setup
 function FoldComments()
   set foldenable
   set fdm=expr
   set fde=getline(v:lnum)=~'^\\s#'?1:getline(prevnonblank(v:lnum))=~'^\\s#'?1:getline(nextnonblank(v:lnum))=~'^\\s*#'?1:0
 endfunction
-
 function ShowComments()
   set nofoldenable
 endfunction
-
 nnoremap <leader>fc :call FoldComments()<CR>
 nnoremap <leader>fo :call ShowComments()<CR>
 
-" Defines the external ack-like program which CtrlSF uses as source
-" If nothing is specified, CtrlSF will try ag first and fallback to ack if ag is not available
+
+
+""
+"" PLUGINS SETUP
+""
+
+" EasyMotion
+nnoremap <leader><leader>m H:call EasyMotion#WB(0, 0)<CR>
+
+" Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+let g:user_emmet_leader_key=',' " ctrl+y + , to open
+
+" Tagalong
+let g:tagalong_verbose = 1
+let g:tagalong_additional_filetypes = ['js', 'vue']
+
+" CtrlSF
 let g:ctrlsf_ackprg = 'ag'
+nmap <C-F> <Plug>CtrlSFPrompt
+
+" ALE
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'vue': ['eslint'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\   'vue': ['prettier', 'eslint'],
+\}
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+let g:ale_set_highlights = 0
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+command Fix ALEFix
+
+
 
 ""
 "" APPEARANCE
 ""
 
-" Add spaces after comment delimiters
-let g:NERDSpaceDelims = 1
-
 " Keeps right color scheme in vim with tmux
 set background=dark
+
+" Adds one space after comment delimiters
+let g:NERDSpaceDelims = 1
 
 " Relative line numbers
 set relativenumber
@@ -63,30 +100,7 @@ set cursorline
 hi cursorline cterm=none term=none
 hi CursorLine ctermbg=237
 
-" Autocomplete (added because of css syntax)
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
 
-"""
-""" HIGHLIGHTS CURRENT FILE IN NERDTREE
-"""
-"
-""" Check if NERDTree is open or active
-"function! IsNERDTreeOpen()
-"  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-"endfunction
-"
-"" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-"" file, and we're not in vimdiff
-"function! SyncTree()
-"  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-"    NERDTreeFind
-"    wincmd p
-"  endif
-"endfunction
-"
-"" Highlight currently open buffer in NERDTree
-"autocmd BufEnter * call SyncTree()
 
 ""
 "" ALIASES
@@ -96,15 +110,13 @@ set omnifunc=syntaxcomplete#Complete
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 " Maps <leader + p> to toggle NerdTree
-silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
+silent! nmap <silent> <leader>p :NERDTreeToggle<CR>
 
 " Maps <leader + b> to toggle the buffer (Buffergator)
-" By default it opens with <leader + b> and closes with <leader + B>
-" Now it's just <leader + b>
 silent! nmap <silent> <leader>b :BuffergatorToggle<CR>
 
-" Lets "´" switch fast to next buffer (Buffergator)
-silent! nmap <silent> ´ :BuffergatorMruCycleNext<CR>
+" Lets <lead><lead>' switch fast to next buffer (Buffergator)
+silent! nmap <silent> <leader><leader>' :BuffergatorMruCycleNext<CR>
 
 " put the cursor out of surrounds in insert mode with 'ctrl + x'
 imap <C-x><C-x> <C-o>a
