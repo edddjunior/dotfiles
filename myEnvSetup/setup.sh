@@ -172,15 +172,15 @@ cd ~/.vim/janus/vim/tools/
 # General Plugins (VERY VERY VERY USEFUL)
 git clone https://github.com/ryanoasis/vim-devicons.git
 git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
+git clone https://github.com/yggdroot/indentline.git
+git clone https://github.com/dense-analysis/ale.git
+git clone https://github.com/kien/ctrlp.vim.git
+git clone https://github.com/rking/ag.vim.git
+git clone https://github.com/dyng/ctrlsf.vim.git
 git clone https://github.com/mattn/emmet-vim.git
 git clone https://github.com/jiangmiao/auto-pairs.git
 git clone https://tpope.io/vim/surround.git
-git clone https://github.com/yggdroot/indentline.git
-git clone https://github.com/dyng/ctrlsf.vim.git
-git clone https://github.com/rking/ag.vim.git
-git clone https://github.com/kien/ctrlp.vim.git
 git clone https://github.com/AndrewRadev/tagalong.vim.git
-git clone https://github.com/dense-analysis/ale.git
 
 cd ~
 wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.after
