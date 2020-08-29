@@ -83,6 +83,9 @@ command Fix ALEFix
 "" APPEARANCE
 ""
 
+" Keeps right syntax highlight
+autocmd BufEnter * :syntax sync fromstart
+
 " Keeps right color scheme in vim with tmux
 set background=dark
 
