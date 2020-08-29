@@ -181,6 +181,7 @@ git clone https://github.com/mattn/emmet-vim.git
 git clone https://github.com/jiangmiao/auto-pairs.git
 git clone https://tpope.io/vim/surround.git
 git clone https://github.com/AndrewRadev/tagalong.vim.git
+git clone https://github.com/Shougo/deoplete.nvim.git
 git clone https://github.com/neoclide/coc.nvim.git
 
 cd ~
