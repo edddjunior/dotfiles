@@ -1,34 +1,12 @@
+""
+"" CONFIGS
+""
+
 " Defines leader key
 let mapleader = ","
 
 " Keeps right color scheme in vim with tmux
 set background=dark
+
 " Keeps right encoding for filetype themes
 set encoding=UTF-8
-
-"" vim-javascript plugin:
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-
-"" close-tag plugin:
-"
-" These are the file extensions where this plugin is enabled.
-let g:closetag_filenames = '*.js,*.jsx,*.html,*.xhtml,*.phtml'
-"
-" This will make the list of non-closing tags self-closing in the specified files.
-let g:closetag_xhtml_filenames = '*.xhtml,*.js,*.jsx'
-"
-" These are the file types where this plugin is enabled.
-let g:closetag_filetypes = 'js,jsx,html,xhtml,phtml'
-"
-"" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
-let g:closetag_emptyTags_caseSensitive = 0
-"
-" Disables auto-close if not in a "valid" region (based on filetype)
-let g:closetag_regions = {}
-"
-" Shortcut for closing tags, default is '>'
-let g:closetag_shortcut = '>'
-"
-" Add > at current position without closing the current tag, default is ''
-let g:closetag_close_shortcut = '<leader>>'
