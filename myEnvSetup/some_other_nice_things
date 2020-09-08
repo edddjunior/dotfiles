@@ -1,9 +1,0 @@
-- Audio switcher (when using 2 or more audio outputs)
-sudo apt-add-repository ppa:yktooo/ppa
-sudo apt-get update && sudo apt-get install indicator-sound-switcher
-
-- Vtop
-npm install -g vtop
-
-- neofetch
-sudo apt install neofetch
