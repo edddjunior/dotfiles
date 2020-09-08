@@ -45,11 +45,6 @@ nnoremap <leader>fo :call ShowComments()<CR>
 " EasyMotion
 nnoremap <leader><leader>m H:call EasyMotion#WB(0, 0)<CR>
 
-" Emmet
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-let g:user_emmet_leader_key=',' " ctrl+y + , to open
-
 " Tagalong
 let g:tagalong_verbose = 1
 let g:tagalong_additional_filetypes = ['js', 'vue']
@@ -73,9 +68,29 @@ let g:ale_set_highlights = 0
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:ale_linters_explicit = 1
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 0
+let g:ale_fix_on_save = 0
 command Fix ALEFix
+
+" CocVim
+inoremap <silent><expr> <NUL> coc#refresh()
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" CocSnippets
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 
 
@@ -83,11 +98,11 @@ command Fix ALEFix
 "" APPEARANCE
 ""
 
+" Theme color
+colorscheme codedark
+
 " Keeps right syntax highlight
 autocmd BufEnter * :syntax sync fromstart
-
-" Keeps right color scheme in vim with tmux
-set background=dark
 
 " Adds one space after comment delimiters
 let g:NERDSpaceDelims = 1
@@ -122,7 +137,7 @@ silent! nmap <silent> <leader>b :BuffergatorToggle<CR>
 silent! nmap <silent> <leader><leader>' :BuffergatorMruCycleNext<CR>
 
 " put the cursor out of surrounds in insert mode with 'ctrl + x'
-imap <C-x><C-x> <C-o>a
+silent! imap <C-x><C-x> <C-o>a
 
 " put the cursor after current word in normal mode
 nmap <leader>e ea
