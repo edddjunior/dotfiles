@@ -1,3 +1,5 @@
+COMPLETELY OUTDATED
+
 # myEnvSetup
 #### These are my dotfiles, and setup.sh is the automator that creates and sets up all the things I need in my machine. Enjoy if you get something useful to you.
 
