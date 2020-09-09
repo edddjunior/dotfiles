@@ -169,6 +169,12 @@ sudo apt-get install rake
 sudo curl -L https://bit.ly/janus-bootstrap | bash
 cd ~/.vim/janus/vim/tools/
 
+# Removing Useless Plugins
+rm -rf vim-snipmate
+rm -rf vim-endwise
+rm -rf vim-supertab
+
+
 # Custom Plugins
 git clone https://github.com/ryanoasis/vim-devicons.git
 git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
@@ -182,7 +188,9 @@ git clone https://github.com/jiangmiao/auto-pairs.git
 git clone https://tpope.io/vim/surround.git
 git clone https://github.com/AndrewRadev/tagalong.vim.git
 git clone https://github.com/Shougo/deoplete.nvim.git
+
 git clone https://github.com/neoclide/coc.nvim.git
+vim -c 'CocInstall -sync coc-json coc-html coc-css coc-snippets coc-highlight coc-emmet coc-vetur coc-tsserver coc-solargraph |q'
 
 cd ~
 wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.after
