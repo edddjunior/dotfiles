@@ -192,6 +192,7 @@ vim -c 'CocInstall -sync coc-json coc-html coc-css coc-snippets coc-highlight co
 cd ~
 wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.after
 wget -O ~/.vimrc.before https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.before
+wget -N https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/coc-settings.json
 echo "Ready."
 
 # Tools
