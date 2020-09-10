@@ -183,14 +183,11 @@ git clone https://github.com/dense-analysis/ale.git
 git clone https://github.com/kien/ctrlp.vim.git
 git clone https://github.com/rking/ag.vim.git
 git clone https://github.com/dyng/ctrlsf.vim.git
-git clone https://github.com/mattn/emmet-vim.git
-git clone https://github.com/jiangmiao/auto-pairs.git
 git clone https://tpope.io/vim/surround.git
 git clone https://github.com/AndrewRadev/tagalong.vim.git
-git clone https://github.com/Shougo/deoplete.nvim.git
 
 git clone https://github.com/neoclide/coc.nvim.git
-vim -c 'CocInstall -sync coc-json coc-html coc-css coc-snippets coc-highlight coc-emmet coc-vetur coc-tsserver coc-solargraph |q'
+vim -c 'CocInstall -sync coc-json coc-html coc-css coc-snippets coc-highlight coc-pairs coc-emmet coc-vetur coc-tsserver coc-solargraph |q'
 
 cd ~
 wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.after
