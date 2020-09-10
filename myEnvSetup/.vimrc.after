@@ -53,30 +53,14 @@ let g:tagalong_additional_filetypes = ['js', 'vue']
 let g:ctrlsf_ackprg = 'ag'
 nmap <C-F> <Plug>CtrlSFPrompt
 
-" ALE
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'vue': ['eslint'],
-\}
-let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint'],
-\   'vue': ['prettier', 'eslint'],
-\}
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-let g:ale_set_highlights = 0
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-let g:ale_linters_explicit = 1
-let g:ale_lint_on_save = 0
-let g:ale_fix_on_save = 0
-command Fix ALEFix
-
 " CocVim
 inoremap <silent><expr> <NUL> coc#refresh()
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" CocPrettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " CocSnippets
 inoremap <silent><expr> <TAB>
@@ -91,6 +75,9 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+" GitGutter
+let g:gitgutter_set_sign_backgrounds = 1
 
 
 
