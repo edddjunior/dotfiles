@@ -36,6 +36,10 @@ endfunction
 nnoremap <leader>fc :call FoldComments()<CR>
 nnoremap <leader>fo :call ShowComments()<CR>
 
+" Forces syntax highlight from start in Js files
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
 
 
 ""
@@ -78,6 +82,9 @@ let g:coc_snippet_next = '<tab>'
 
 " GitGutter
 let g:gitgutter_set_sign_backgrounds = 1
+
+" Markdown preview
+let vim_markdown_preview_github=1
 
 
 
