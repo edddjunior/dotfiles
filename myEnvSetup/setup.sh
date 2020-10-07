@@ -166,6 +166,7 @@ echo "Vim... ###################################################################
 sudo apt-get install vim -y && sudo apt-get install vim-gnome -y
 sudo apt-get install silversearcher-ag -y
 sudo apt-get install rake
+sudo apt-get install grip
 sudo curl -L https://bit.ly/janus-bootstrap | bash
 cd ~/.vim/janus/vim/tools/
 
@@ -185,6 +186,8 @@ git clone https://github.com/rking/ag.vim.git
 git clone https://github.com/dyng/ctrlsf.vim.git
 git clone https://tpope.io/vim/surround.git
 git clone https://github.com/AndrewRadev/tagalong.vim.git
+git clone https://github.com/JamshedVesuna/vim-markdown-preview.git
+git clone https://github.com/voldikss/vim-floaterm.git
 
 git clone https://github.com/neoclide/coc.nvim.git
 vim -c 'CocInstall -sync coc-json coc-html coc-css coc-snippets coc-highlight coc-pairs coc-emmet coc-vetur coc-tsserver coc-solargraph |q'
