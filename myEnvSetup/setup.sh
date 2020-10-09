@@ -180,7 +180,6 @@ rm -rf vim-supertab
 git clone https://github.com/ryanoasis/vim-devicons.git
 git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
 git clone https://github.com/yggdroot/indentline.git
-git clone https://github.com/dense-analysis/ale.git
 git clone https://github.com/kien/ctrlp.vim.git
 git clone https://github.com/rking/ag.vim.git
 git clone https://github.com/dyng/ctrlsf.vim.git
