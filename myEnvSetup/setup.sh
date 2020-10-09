@@ -17,21 +17,29 @@ postgresql_version='10'
 postgresql_password=''
 echo "Ready."
 
+
+
 # Update and upgrade
 echo "Updating repositories... #############################################################################################################################################"
 sudo apt-get update -y
 sudo apt-get upgrade -y
 echo "Ready."
 
+
+
 # Other stuff
 echo "Other Stuff... #######################################################################################################################################################"
 sudo apt-get install -y build-essential automake autoconf bison libssl-dev libyaml-dev libreadline-dev libxslt-dev libtool unixodbc-dev unzip zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev
 echo "Ready."
 
+
+
 # Curl and Wget
 echo "Installing Curl and Wget... ##########################################################################################################################################"
 sudo apt-get install curl -y && sudo apt-get install wget -y
 echo "Ready."
+
+
 
 # Git and its conf
 echo "Git... ###############################################################################################################################################################"
@@ -41,11 +49,15 @@ git config --global user.email "${git_email}"
 sudo apt-get install -y gitk
 echo "Ready."
 
+
+
 # Chrome
 echo "Installing Chrome... #################################################################################################################################################"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 echo "Ready."
+
+
 
 # Zsh
 echo "Zsh... ###############################################################################################################################################################"
@@ -56,21 +68,29 @@ chsh -s $(which zsh)
 sed -i 's/bash/zsh/g' /etc/passwd
 echo "Ready."
 
+
+
 # OhMyZsh
 echo "OhMyZsh... ###########################################################################################################################################################"
 yes | sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 rm -rf ~/.zshrc && wget -O ~/.zshrc https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.zshrc
 echo "Ready."
 
+
+
 # Java
 echo "Java... ##############################################################################################################################################################"
 sudo apt-get install ${java_version} -y
 echo "Ready."
 
+
+
 # VirtualBox
 echo "VirtualBox... ########################################################################################################################################################"
 sudo apt-get install virtualbox virtualbox-ext-pack -y
 echo "Ready."
+
+
 
 # ASDF
 echo "ASDF... ##############################################################################################################################################################"
@@ -87,6 +107,8 @@ sudo chown -R $USER ~/.asdf/
 sudo chown -R $USER:$(id -gn $USER) /home/edddjunior/.config
 echo "Ready."
 
+
+
 # Node.js
 echo "Node... ##############################################################################################################################################################"
 asdf plugin-add nodejs
@@ -95,14 +117,20 @@ asdf install nodejs ${node_version}
 asdf global nodejs ${node_version}
 echo "Ready."
 
+
+
 # React
 echo "React... #############################################################################################################################################################"
 npm install -g create-react-app
+
+
 
 # Yarn
 echo "Yarn... ##############################################################################################################################################################"
 npm install --global yarn
 echo "Ready."
+
+
 
 # Ruby
 echo "Ruby... ##############################################################################################################################################################"
@@ -111,11 +139,15 @@ asdf install ruby ${ruby_version}
 asdf global ruby ${ruby_version}
 echo "Ready."
 
+
+
 # Rails
 echo "Rails... #############################################################################################################################################################"
 sudo apt-get install sqlite3 libsqlite3-dev
 gem install rails -v ${rails_version}
 echo "Ready."
+
+
 
 # Postgres
 echo "Postgres... ##########################################################################################################################################################"
@@ -135,6 +167,8 @@ sudo apt-get install redis -y
 sudo systemctl disable redis-server
 echo "Ready."
 
+
+
 # Elasticsearch
 echo "Elasticsearch... #####################################################################################################################################################"
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
@@ -143,6 +177,8 @@ echo "deb https://artifacts.elastic.co/packages/${elasticsearch_version}/apt sta
 sudo apt-get update && sudo apt-get install elasticsearch
 sudo systemctl disable elasticsearch
 echo "Ready."
+
+
 
 # Regolith
 echo "Regolith... ###########################################################################################################################################################"
@@ -154,12 +190,16 @@ sudo sed -i 's,^set $terminal_path.*,set $terminal_path /usr/bin/gnome-terminal,
 sudo sed -i 's,^i3xrocks.date.format:.*,i3xrocks.date.format:       + %d/%m %H:%M %p,g' /etc/regolith/styles/i3xrocks
 echo "Ready."
 
+
+
 # Tmux
 echo "Tmux... ##############################################################################################################################################################"
 sudo apt-get install tmux -y
 wget -O ~/.tmux.conf https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.tmux.conf
 sudo apt-get install xclip
 echo "Ready."
+
+
 
 # Vim
 echo "Vim... ###############################################################################################################################################################"
@@ -175,7 +215,6 @@ rm -rf vim-snipmate
 rm -rf vim-endwise
 rm -rf vim-supertab
 
-
 # Custom Plugins
 git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
 git clone https://github.com/ryanoasis/vim-devicons.git
@@ -189,6 +228,7 @@ git clone https://github.com/AndrewRadev/tagalong.vim.git
 git clone https://github.com/JamshedVesuna/vim-markdown-preview.git
 git clone https://github.com/voldikss/vim-floaterm.git
 
+# Coc extensions
 git clone https://github.com/neoclide/coc.nvim.git
 vim -c 'CocInstall -sync coc-json coc-html coc-css coc-snippets coc-highlight coc-pairs coc-emmet coc-vetur coc-tsserver coc-solargraph |q'
 
@@ -197,6 +237,8 @@ wget -O ~/.vimrc.after https://raw.githubusercontent.com/edddjunior/dotfiles/mas
 wget -O ~/.vimrc.before https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/.vimrc.before
 wget -N https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/coc-settings.json
 echo "Ready."
+
+
 
 # Tools
 echo "Tools... #############################################################################################################################################################"
@@ -207,16 +249,22 @@ sudo apt-get install imagemagick -y
 sudo apt-get install net-tools -y
 echo "Ready."
 
+
+
 # Allows to remove apps from automatic start
 echo "This allows to remove apps from automatic start... ###################################################################################################################"
 cd ~
 sudo sed -i "s/NoDisplay=true/NoDisplay=false/g" /etc/xdg/autostart/*.desktop
 echo "Ready."
 
+
+
 # SSH keys
 echo "Generate SSH Keys... #################################################################################################################################################"
 ssh-keygen -t rsa -b 4096 -C "${git_email}"
 echo "Ready."
+
+
 
 # TRIM SSD
 echo "TRIM SSD... ##########################################################################################################################################################"
@@ -224,6 +272,8 @@ sudo fstrim -v /
 sudo wget -O /etc/cron.daily/TRIM_ssd https://raw.githubusercontent.com/edddjunior/dotfiles/master/myEnvSetup/TRIM_ssd
 sudo chmod +x /etc/cron.daily/TRIM_ssd
 echo "Ready."
+
+
 
 # Firewall and SSH server
 echo "FIrewall and SSH server. #############################################################################################################################################"
@@ -236,6 +286,8 @@ sudo sed -i "s/#MaxSessions 10/MaxSessions 2/g" /etc/ssh/sshd_config
 sudo sed -i "s/#@student        -       maxlogins       4/@edddjunior      -       maxlogins       2/g" /etc/security/limits.conf
 sudo systemctl restart sshd.service
 echo "Ready."
+
+
 
 # MFA for SSH server
 echo "Wanna setup Multi-Factor-Authentication for the SSH server? Pay attention."
@@ -257,6 +309,8 @@ else
 	read -p "Press Enter to finish it."
 	echo "Finished!"
 fi
+
+
 
 # Checking results
 echo "Wanna check if everything is working? You may need to interact with terminal (just close and stop stuff if needed)."
