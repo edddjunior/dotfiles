@@ -161,6 +161,8 @@ sudo service postgresql restart
 sudo systemctl disable postgresql
 echo "Ready."
 
+
+
 # Redis
 echo "Redis... #############################################################################################################################################################"
 sudo apt-get install redis -y
