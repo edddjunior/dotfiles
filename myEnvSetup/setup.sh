@@ -177,8 +177,9 @@ rm -rf vim-supertab
 
 
 # Custom Plugins
-git clone https://github.com/ryanoasis/vim-devicons.git
 git clone https://github.com/tiagofumo/vim-nerdtree-syntax-highlight.git
+git clone https://github.com/ryanoasis/vim-devicons.git
+git clone https://github.com/tomasiser/vim-code-dark.git
 git clone https://github.com/yggdroot/indentline.git
 git clone https://github.com/kien/ctrlp.vim.git
 git clone https://github.com/rking/ag.vim.git
@@ -186,7 +187,6 @@ git clone https://github.com/dyng/ctrlsf.vim.git
 git clone https://tpope.io/vim/surround.git
 git clone https://github.com/AndrewRadev/tagalong.vim.git
 git clone https://github.com/JamshedVesuna/vim-markdown-preview.git
-git clone https://github.com/tomasiser/vim-code-dark.git
 git clone https://github.com/voldikss/vim-floaterm.git
 
 git clone https://github.com/neoclide/coc.nvim.git
